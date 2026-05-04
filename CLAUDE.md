@@ -44,3 +44,10 @@ app.js             All frontend state, rendering, interaction
 | `MIN_TICK_PX = 55` | Minimum px between ruler ticks (drives tick interval selection) |
 | `TIERS = 4`, `TIER_H = 14` | Label stagger: max tiers and px per tier |
 | `MIN_PX = 2`, `MAX_PX = 120` | Zoom clamp range (px per year) |
+
+## Git workflow
+
+Only commit and push when explicitly asked by the user. When committing:
+- Write a concise commit message (imperative mood, ≤ 72 chars subject line)
+- Follow with a short body if the change needs context
+- Push to GitHub (`git push`) in the same step
