@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline Correlator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>Timeline Correlator</h1>
+    <span class="header-subtitle">Explore stories side by side</span>
+  </div>
+  <div class="header-controls">
+    <button id="btn-zoom-out" title="Zoom out">−</button>
+    <span id="zoom-level">12 px/yr</span>
+    <button id="btn-zoom-in" title="Zoom in">+</button>
+    <button id="btn-add-timeline" class="btn-primary">+ Add Timeline</button>
+  </div>
+</header>
+
+<main>
+  <div id="timeline-viewport">
+    <div id="timeline-canvas">
+      <div id="ruler"></div>
+      <div id="timeline-rows"></div>
+    </div>
+  </div>
+  <div id="empty-hint">No timelines yet. Click <strong>+ Add Timeline</strong> to get started.</div>
+</main>
+
+<!-- Modal: Add Timeline -->
+<div class="modal-overlay" id="modal-add-timeline">
+  <div class="modal-box">
+    <button class="modal-close" data-modal="modal-add-timeline">×</button>
+    <h2>Add Timeline</h2>
+    <form id="form-add-timeline">
+      <label>
+        Name
+        <input type="text" id="tl-name" placeholder="e.g. French Revolution" required>
+      </label>
+      <label class="label-color">
+        Color
+        <input type="color" id="tl-color" value="#3498db">
+      </label>
+      <div class="wiki-import">
+        <div class="wiki-search-row">
+          <input type="text" id="wiki-topic" placeholder="Search Wikipedia topic…">
+          <button type="button" id="btn-wiki-search" class="btn-secondary">Search</button>
+        </div>
+        <div id="wiki-status" class="wiki-status"></div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" data-modal="modal-add-timeline">Cancel</button>
+        <button type="submit" class="btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Add Event -->
+<div class="modal-overlay" id="modal-add-event">
+  <div class="modal-box">
+    <button class="modal-close" data-modal="modal-add-event">×</button>
+    <h2>Add Event</h2>
+    <form id="form-add-event">
+      <input type="hidden" id="ev-timeline-id">
+      <label>
+        Year
+        <input type="number" id="ev-year" min="1" max="9999" placeholder="e.g. 1945" required>
+      </label>
+      <label>
+        Title
+        <input type="text" id="ev-title" placeholder="Short title" required>
+      </label>
+      <label>
+        Description
+        <textarea id="ev-desc" rows="3" placeholder="Optional details…"></textarea>
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" data-modal="modal-add-event">Cancel</button>
+        <button type="submit" class="btn-primary">Add Event</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Event Detail -->
+<div class="modal-overlay" id="modal-event-detail">
+  <div class="modal-box">
+    <button class="modal-close" data-modal="modal-event-detail">×</button>
+    <div id="detail-header">
+      <span id="detail-year-badge"></span>
+      <h2 id="detail-title"></h2>
+    </div>
+    <p id="detail-desc"></p>
+    <p id="detail-timeline-name"></p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
